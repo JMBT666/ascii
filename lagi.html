@@ -32,7 +32,7 @@
         return content;
     }
 
-    function typeWriter(text, element, speed = 100) {
+    function typeWriter(text, element, speed = 30) {  // Mengurangi delay jadi 30ms
         let i = 0;
         function typing() {
             if (i < text.length) {
@@ -51,7 +51,7 @@
         setTimeout(() => {
             terminal.innerHTML = '';  // clear after loading message
             typeWriter(fileContent, terminal);
-        }, 1000);
+        }, 500);  // Mempercepat jeda sebelum pengetikan dimulai
     }
 
     startTyping();
