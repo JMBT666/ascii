@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Line Animation</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: black;
+            color: green;
+            padding: 20px;
+        }
+        #terminal {
+            white-space: pre-wrap;
+            overflow-y: auto;
+            height: 300px;
+            border: 1px solid #4CAF50;
+            padding: 10px;
+            box-shadow: 0px 0px 15px 0px #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+<div id="terminal"></div>
+
+<script>
+    async function fetchAsciiFile() {
+        const response = await fetch('ascii.txt');
+        const content = await response.text();
+        return content;
+    }
+
+    function typeWriter(text, element, speed = 100) {
+        let i = 0;
+        function typing() {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typing, speed);
+            }
+        }
+        typing();
+    }
+
+    async function startTyping() {
+        const terminal = document.getElementById('terminal');
+        terminal.innerHTML = 'Loading ascii.txt... \n\n';
+        const fileContent = await fetchAsciiFile();
+        setTimeout(() => {
+            terminal.innerHTML = '';  // clear after loading message
+            typeWriter(fileContent, terminal);
+        }, 1000);
+    }
+
+    startTyping();
+</script>
+
+</body>
+</html>
