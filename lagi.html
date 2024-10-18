@@ -19,8 +19,8 @@
         #terminal {
             white-space: pre-wrap;
             overflow-y: auto;
-            width: 90%;             /* Fleksibel, 90% dari lebar layar */
-            max-width: 1200px;       /* Maksimal lebar 1200px */
+            width: 95%;             /* Fleksibel, 95% dari lebar layar */
+            max-width: 1400px;       /* Maksimal lebar 1400px */
             height: 80%;             /* Fleksibel, 80% dari tinggi layar */
             max-height: 700px;       /* Maksimal tinggi 700px */
             border: 1px solid #4CAF50;
@@ -42,7 +42,7 @@
         return content;
     }
 
-    function typeWriter(text, element, speed = 5) {
+    function typeWriter(text, element, speed = 30) {
         let i = 0;
         function typing() {
             if (i < text.length) {
