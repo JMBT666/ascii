@@ -9,15 +9,25 @@
             font-family: 'Courier New', Courier, monospace;
             background-color: black;
             color: green;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         #terminal {
             white-space: pre-wrap;
             overflow-y: auto;
-            height: 300px;
+            width: 90%;             /* Fleksibel, 90% dari lebar layar */
+            max-width: 1200px;       /* Maksimal lebar 1200px */
+            height: 80%;             /* Fleksibel, 80% dari tinggi layar */
+            max-height: 700px;       /* Maksimal tinggi 700px */
             border: 1px solid #4CAF50;
             padding: 10px;
             box-shadow: 0px 0px 15px 0px #4CAF50;
+            background-color: black;
+            color: green;
         }
     </style>
 </head>
@@ -32,7 +42,7 @@
         return content;
     }
 
-    function typeWriter(text, element, speed = 10) {  // Mengurangi delay jadi 30ms
+    function typeWriter(text, element, speed = 5) {
         let i = 0;
         function typing() {
             if (i < text.length) {
@@ -51,7 +61,7 @@
         setTimeout(() => {
             terminal.innerHTML = '';  // clear after loading message
             typeWriter(fileContent, terminal);
-        }, 500);  // Mempercepat jeda sebelum pengetikan dimulai
+        }, 500);
     }
 
     startTyping();
